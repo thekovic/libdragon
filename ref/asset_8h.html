@@ -118,9 +118,10 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a class="code hl_define" href="asset_8h.html#a6bdfd4d8e3a7e807dd7e1b8cb00332a4">asset_init_compression</a>(2); </div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Load an asset that might use level 2 compression</span></div>
-<div class="line"><a class="code hl_struct" href="group__graphics.html#structsprite__t">sprite_t</a> *hero = sprite_load(<span class="stringliteral">&quot;rom:/hero.sprite&quot;</span>);</div>
-<div class="ttc" id="aasset_8h_html_a6bdfd4d8e3a7e807dd7e1b8cb00332a4"><div class="ttname"><a href="asset_8h.html#a6bdfd4d8e3a7e807dd7e1b8cb00332a4">asset_init_compression</a></div><div class="ttdeci">#define asset_init_compression(level)</div><div class="ttdoc">Enable a non-default compression level.</div><div class="ttdef"><b>Definition:</b> asset.h:103</div></div>
-<div class="ttc" id="agroup__graphics_html_structsprite__t"><div class="ttname"><a href="group__graphics.html#structsprite__t">sprite_t</a></div><div class="ttdoc">Sprite structure.</div><div class="ttdef"><b>Definition:</b> graphics.h:63</div></div>
+<div class="line"><a class="code hl_struct" href="sprite_8h.html#structsprite__t">sprite_t</a> *hero = <a class="code hl_function" href="sprite_8h.html#a746970338ac3f8db984b4f08fc6e9a21">sprite_load</a>(<span class="stringliteral">&quot;rom:/hero.sprite&quot;</span>);</div>
+<div class="ttc" id="aasset_8h_html_a6bdfd4d8e3a7e807dd7e1b8cb00332a4"><div class="ttname"><a href="asset_8h.html#a6bdfd4d8e3a7e807dd7e1b8cb00332a4">asset_init_compression</a></div><div class="ttdeci">#define asset_init_compression(level)</div><div class="ttdoc">Enable a non-default compression level.</div><div class="ttdef"><b>Definition:</b> asset.h:105</div></div>
+<div class="ttc" id="asprite_8h_html_a746970338ac3f8db984b4f08fc6e9a21"><div class="ttname"><a href="sprite_8h.html#a746970338ac3f8db984b4f08fc6e9a21">sprite_load</a></div><div class="ttdeci">sprite_t * sprite_load(const char *fn)</div><div class="ttdoc">Load a sprite from a filesystem (eg: ROM)</div><div class="ttdef"><b>Definition:</b> sprite.c:69</div></div>
+<div class="ttc" id="asprite_8h_html_structsprite__t"><div class="ttname"><a href="sprite_8h.html#structsprite__t">sprite_t</a></div><div class="ttdoc">Sprite structure.</div><div class="ttdef"><b>Definition:</b> sprite.h:40</div></div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">level</td><td>Compression level to initialize</td></tr>
@@ -199,7 +200,7 @@ Functions</h2></td></tr>
 
 <p>Open an asset file for reading (with transparent decompression) </p>
 <p >This function opens a file from a file system (eg: from ROM or SD). If the file was compressed using the mkasset tool, it will be automatically uncompressed as it is being read.</p>
-<p >Note that since the file might be compressed, the returned FILE* cannot be rewinded, nor seeked backward, as that would be impossible to do efficiently on a compressed file. Seeking forward is supported and is simulated by reading (decompressing) and discarding data.</p>
+<p >Note that since the file might be compressed, the returned FILE* cannot be arbitrarily seeked backward, as that would be impossible to do efficiently on a compressed file. Seeking forward is supported and is simulated by reading (decompressing) and discarding data. You can rewind the file to the start though, (by using either fseek or rewind).</p>
 <p >This behavior of the returned file is enforced also for non compressed assets, so that the code is ready to switch to compressed assets if required. If you need random access to an uncompressed file, simply use the standard fopen() function.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -215,7 +216,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 4 2023 22:19:05 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Wed Jun 5 2024 19:06:52 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

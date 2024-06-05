@@ -10,9 +10,13 @@ var searchData=
   ['_5f_5feh_5fframe_5fbegin_5f_5f_7',['__EH_FRAME_BEGIN__',['../group__system.html#ga9efca5b23bc6ea3165cab5b4ebfb4c77',1,'do_ctors.c']]],
   ['_5f_5fenv_8',['__env',['../group__system.html#ga5428d66981cb84e60b899495874618b2',1,'system.c']]],
   ['_5f_5flibdragon_5ftext_5fstart_9',['__libdragon_text_start',['../group__n64sys.html#gaeee0500fc15a8edadab5e50494669416',1,'n64sys.h']]],
-  ['_5f_5fmixer_5fprofile_5frsp_10',['__mixer_profile_rsp',['../mixer_8c.html#adb6462ba394e665c815abb852d8e341f',1,'mixer.c']]],
-  ['_5f_5fpad0_5f_5f_11',['__pad0__',['../group__controller.html#a9d55f6a808529317eea1a9c6e6a2d203',1,'_SI_condat']]],
-  ['_5f_5fpad1_5f_5f_12',['__pad1__',['../group__controller.html#ae1549b09333a3d1e0ee817606319e15f',1,'_SI_condat']]],
-  ['_5f_5from_5fend_13',['__rom_end',['../group__n64sys.html#ga4e07cc711f6f6d1853ee441b43cb54cb',1,'n64sys.h']]],
-  ['_5f_5fwav64_5fprofile_5fdma_14',['__wav64_profile_dma',['../wav64_8c.html#a6090ed2c8a2f8e13225458264164e11a',1,'wav64.c']]]
+  ['_5f_5fmixer_5foverlay_5fid_10',['__mixer_overlay_id',['../mixer_8c.html#a728b6be978ab3d502aa747add3151db3',1,'mixer.c']]],
+  ['_5f_5fmixer_5fprofile_5frsp_11',['__mixer_profile_rsp',['../mixer_8c.html#adb6462ba394e665c815abb852d8e341f',1,'mixer.c']]],
+  ['_5f_5fpad0_5f_5f_12',['__pad0__',['../group__controller.html#a9d55f6a808529317eea1a9c6e6a2d203',1,'_SI_condat']]],
+  ['_5f_5fpad1_5f_5f_13',['__pad1__',['../group__controller.html#ae1549b09333a3d1e0ee817606319e15f',1,'_SI_condat']]],
+  ['_5f_5frdpq_5fdebug_5flog_5fflags_14',['__rdpq_debug_log_flags',['../rdpq__debug_8c.html#aaa37cd789b76388600a01ef2b0445355',1,'rdpq_debug.c']]],
+  ['_5f_5frdpq_5finited_15',['__rdpq_inited',['../rdpq_8c.html#a31b230c610daa5f50adaa7323ea2698b',1,'__rdpq_inited():&#160;rdpq.c'],['../rdpq__internal_8h.html#a31b230c610daa5f50adaa7323ea2698b',1,'__rdpq_inited():&#160;rdpq.c']]],
+  ['_5f_5from_5fend_16',['__rom_end',['../group__n64sys.html#ga4e07cc711f6f6d1853ee441b43cb54cb',1,'n64sys.h']]],
+  ['_5f_5frspq_5fsyncpoints_5fdone_17',['__rspq_syncpoints_done',['../rspq_8c.html#a4bb2ee1cdad42a176be51abf5530bc0f',1,'__rspq_syncpoints_done():&#160;rspq.c'],['../rspq__internal_8h.html#a4bb2ee1cdad42a176be51abf5530bc0f',1,'__rspq_syncpoints_done():&#160;rspq.c']]],
+  ['_5f_5fwav64_5fprofile_5fdma_18',['__wav64_profile_dma',['../wav64_8c.html#a6090ed2c8a2f8e13225458264164e11a',1,'wav64.c']]]
 ];
