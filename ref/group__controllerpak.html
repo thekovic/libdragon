@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libdragon: Controllerpak</title>
+<title>libdragon: Controller Pak Filesystem Routines</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo2.png"/></td>
   <td id="projectalign">
    <div id="projectname">libdragon
    </div>
@@ -67,9 +68,12 @@ $(function() {
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">Controllerpak</div></div>
+  <div class="headertitle"><div class="title">Controller Pak Filesystem Routines<div class="ingroups"><a class="el" href="group__libdragon.html">libdragon</a> &raquo; <a class="el" href="group__controller.html">Controller Subsystem</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Managed Controller Pak interface.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
 Files</h2></td></tr>
@@ -124,6 +128,9 @@ Functions</h2></td></tr>
 <tr class="separator:gaa56a78fe3d1d2b9427afe8d5894156df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p >Managed Controller Pak interface. </p>
+<p >The Controller Pak system is a subsystem of the <a class="el" href="group__controller.html">Controller Subsystem</a>. Before attempting to read from or write to a Controller Pak, be sure you have initialized the controller system with <a class="el" href="group__controller.html#gad13ec5f696a3c69997b9fc57246a0238" title="Initialize the controller subsystem.">controller_init</a> and verified that you have a mempak in the correct controller using <a class="el" href="group__controller.html#ga61f79691c93aed5a6abaf2d962823680" title="Identify the accessory connected to a controller.">identify_accessory</a>.</p>
+<p >To read and write to the Controller Pak in an organized way compatible with official software, first check that the Controller Pak is valid using <a class="el" href="group__controllerpak.html#gaf245021aed55de7a17cf417d41cdc32f" title="Return whether a Controller Pak is valid.">validate_mempak</a>. If the Controller Pak is invalid, it will need to be formatted using <a class="el" href="group__controllerpak.html#ga14df2d1b0aeb7436cabd95294eb29b9f" title="Format a Controller Pak.">format_mempak</a>. Once the Controller Pak is considered valid, existing notes can be enumerated using <a class="el" href="group__controllerpak.html#gaaa54d6b5cea4be11738f951318ebc758" title="Read an entry on a Controller Pak.">get_mempak_entry</a>. To read the data associated with a note, use <a class="el" href="group__controllerpak.html#ga7e07b0ab92a7f383b355f5ed99c5f727" title="Read the data associated with an entry on a Controller Pak.">read_mempak_entry_data</a>. To write a new note to the Controller Pak, use <a class="el" href="group__controllerpak.html#ga520a9d2a4eb81c7f40ed2fcc9ecafecc" title="Write associated data to a Controller Pak entry.">write_mempak_entry_data</a>. Note that there is no append functionality so if a note is being updated, ensure you have deleted the old note first using <a class="el" href="group__controllerpak.html#gaa56a78fe3d1d2b9427afe8d5894156df" title="Delete a Controller Pak entry and associated data.">delete_mempak_entry</a>. Code should be careful to check how many blocks are free before writing using <a class="el" href="group__controllerpak.html#ga5b092c36dbd886af01b0c4be86554946" title="Return the number of free blocks on a Controller Pak.">get_mempak_free_space</a>. </p>
 <hr/><h2 class="groupheader">Data Structure Documentation</h2>
 <a name="structentry__structure__t" id="structentry__structure__t"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#structentry__structure__t">&#9670;&nbsp;</a></span>entry_structure_t</h2>
@@ -490,7 +497,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!"#`*+,-./:=?@
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">controller</td><td>The controller (0-3) to read the entry data from </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">entry</td><td>The entry structure associated with the data to be read. An entry structure can be fetched based on index using <a class="el" href="group__cpak.html#gaaa54d6b5cea4be11738f951318ebc758" title="Read an entry on a Controller Pak.">get_mempak_entry</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">entry</td><td>The entry structure associated with the data to be read. An entry structure can be fetched based on index using <a class="el" href="group__controllerpak.html#gaaa54d6b5cea4be11738f951318ebc758" title="Read an entry on a Controller Pak.">get_mempak_entry</a> </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>The data associated with an entry</td></tr>
   </table>
   </dd>
@@ -540,7 +547,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!"#`*+,-./:=?@
 </div><div class="memdoc">
 
 <p>Write associated data to a Controller Pak entry. </p>
-<p >Given a Controller Pak entry structure with a valid region, name and block count, writes the entry and associated data to the Controller Pak. This function will not overwrite any existing user data. To update an existing entry, use <a class="el" href="group__cpak.html#gaa56a78fe3d1d2b9427afe8d5894156df" title="Delete a Controller Pak entry and associated data.">delete_mempak_entry</a> followed by <a class="el" href="group__cpak.html#ga520a9d2a4eb81c7f40ed2fcc9ecafecc" title="Write associated data to a Controller Pak entry.">write_mempak_entry_data</a> with the same entry structure.</p>
+<p >Given a Controller Pak entry structure with a valid region, name and block count, writes the entry and associated data to the Controller Pak. This function will not overwrite any existing user data. To update an existing entry, use <a class="el" href="group__controllerpak.html#gaa56a78fe3d1d2b9427afe8d5894156df" title="Delete a Controller Pak entry and associated data.">delete_mempak_entry</a> followed by <a class="el" href="group__controllerpak.html#ga520a9d2a4eb81c7f40ed2fcc9ecafecc" title="Write associated data to a Controller Pak entry.">write_mempak_entry_data</a> with the same entry structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">controller</td><td>The controller (0-3) to write the entry and data to </td></tr>
@@ -590,7 +597,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!"#`*+,-./:=?@
 </div><div class="memdoc">
 
 <p>Delete a Controller Pak entry and associated data. </p>
-<p >Given a valid Controller Pak entry fetched by <a class="el" href="group__cpak.html#gaaa54d6b5cea4be11738f951318ebc758" title="Read an entry on a Controller Pak.">get_mempak_entry</a>, removes the entry and frees all associated blocks.</p>
+<p >Given a valid Controller Pak entry fetched by <a class="el" href="group__controllerpak.html#gaaa54d6b5cea4be11738f951318ebc758" title="Read an entry on a Controller Pak.">get_mempak_entry</a>, removes the entry and frees all associated blocks.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">controller</td><td>The controller (0-3) to delete the note from </td></tr>
@@ -612,7 +619,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!"#`*+,-./:=?@
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 5 2024 19:06:52 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

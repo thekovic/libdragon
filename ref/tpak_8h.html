@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo2.png"/></td>
   <td id="projectalign">
    <div id="projectname">libdragon
    </div>
@@ -90,9 +91,9 @@ Data Structures</h2></td></tr>
 <tr class="memitem:structgameboy__cartridge__header"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tpak_8h.html#structgameboy__cartridge__header">gameboy_cartridge_header</a></td></tr>
 <tr class="memdesc:structgameboy__cartridge__header"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game Boy cartridge ROM header structure.  <a href="tpak_8h.html#structgameboy__cartridge__header">More...</a><br /></td></tr>
 <tr class="separator:structgameboy__cartridge__header"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:uniongameboy__cartridge__header_8____unnamed40____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tpak_8h.html#uniongameboy__cartridge__header_8____unnamed40____">gameboy_cartridge_header.__unnamed40__</a></td></tr>
-<tr class="memdesc:uniongameboy__cartridge__header_8____unnamed40____"><td class="mdescLeft">&#160;</td><td class="mdescRight">Union of possible structures for the game title bytes.  <a href="tpak_8h.html#uniongameboy__cartridge__header_8____unnamed40____">More...</a><br /></td></tr>
-<tr class="separator:uniongameboy__cartridge__header_8____unnamed40____"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:uniongameboy__cartridge__header_8____unnamed44____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tpak_8h.html#uniongameboy__cartridge__header_8____unnamed44____">gameboy_cartridge_header.__unnamed44__</a></td></tr>
+<tr class="memdesc:uniongameboy__cartridge__header_8____unnamed44____"><td class="mdescLeft">&#160;</td><td class="mdescRight">Union of possible structures for the game title bytes.  <a href="tpak_8h.html#uniongameboy__cartridge__header_8____unnamed44____">More...</a><br /></td></tr>
+<tr class="separator:uniongameboy__cartridge__header_8____unnamed44____"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -358,7 +359,7 @@ logo[48]</td>
 <td class="fielddoc">
 Bitmap image data for the boot logo. </td></tr>
 <tr><td class="fieldtype">
-<a id="a78c2bae5923ddcbda6fd3d67b00bc9cf" name="a78c2bae5923ddcbda6fd3d67b00bc9cf"></a>union <a class="el" href="tpak_8h.html#uniongameboy__cartridge__header_8____unnamed40____">gameboy_cartridge_header.__unnamed40__</a></td>
+<a id="a52bae0c888f3171fd5921e42662c1ca1" name="a52bae0c888f3171fd5921e42662c1ca1"></a>union <a class="el" href="tpak_8h.html#uniongameboy__cartridge__header_8____unnamed44____">gameboy_cartridge_header.__unnamed44__</a></td>
 <td class="fieldname">
 __unnamed__</td>
 <td class="fielddoc">
@@ -433,14 +434,14 @@ Padding. </td></tr>
 
 </div>
 </div>
-<a name="uniongameboy__cartridge__header_8____unnamed40____" id="uniongameboy__cartridge__header_8____unnamed40____"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#uniongameboy__cartridge__header_8____unnamed40____">&#9670;&nbsp;</a></span>gameboy_cartridge_header.__unnamed40__</h2>
+<a name="uniongameboy__cartridge__header_8____unnamed44____" id="uniongameboy__cartridge__header_8____unnamed44____"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#uniongameboy__cartridge__header_8____unnamed44____">&#9670;&nbsp;</a></span>gameboy_cartridge_header.__unnamed44__</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">union gameboy_cartridge_header.__unnamed40__</td>
+          <td class="memname">union gameboy_cartridge_header.__unnamed44__</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -857,7 +858,7 @@ new_title</td>
 </div><div class="memdoc">
 
 <p>Set the cartridge data address memory bank for a Transfer Pak. </p>
-<p >Change the bank of address space that is available for <a class="el" href="tpak_8c.html#a1e1f0e50ff7db26b5813049a1987c508" title="Read data from a Game Boy cartridge to a buffer via Transfer Pak.">tpak_read</a> and <a class="el" href="tpak_8c.html#ae308ff35ec377df7108eebde198dfbe2" title="Write data from a buffer to a Game Boy cartridge via Transfer Pak.">tpak_write</a> between Transfer Pak addresses 0xC000 and 0xFFFF.</p>
+<p >Change the bank of address space that is available for <a class="el" href="tpak_8h.html#a1e1f0e50ff7db26b5813049a1987c508" title="Read data from a Game Boy cartridge to a buffer via Transfer Pak.">tpak_read</a> and <a class="el" href="tpak_8h.html#ae308ff35ec377df7108eebde198dfbe2" title="Write data from a buffer to a Game Boy cartridge via Transfer Pak.">tpak_write</a> between Transfer Pak addresses 0xC000 and 0xFFFF.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">controller</td><td>The controller (0-3) with Transfer Pak connected. </td></tr>
@@ -1145,7 +1146,7 @@ new_title</td>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 5 2024 19:06:52 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>
