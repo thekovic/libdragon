@@ -42,6 +42,7 @@ extern "C" {
 
 // Embedded GDB script to auto-load DSO symbols
 #ifndef N64_DSO
+/// @cond
 asm(
 ".pushsection \".debug_gdb_scripts\", \"MS\",@progbits,1\n"
 ".byte 4\n"
@@ -70,6 +71,7 @@ asm(
 ".byte 0\n"
 ".popsection\n"
 );
+/// @endcond
 #endif
 
 /**
