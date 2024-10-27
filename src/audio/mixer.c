@@ -61,10 +61,11 @@ DEFINE_RSP_UCODE(rsp_mixer);
 #define MIXER_STATE_SIZE 128
 
 // NOTE: keep these in sync with rsp_mixer.S
-#define CH_FLAGS_BPS_SHIFT  (3<<0)   ///< BPS shift value
-#define CH_FLAGS_16BIT      (1<<2)   ///< Set if the channel is 16 bit
-#define CH_FLAGS_STEREO     (1<<3)   ///< Set if the channel is stereo (left)
-#define CH_FLAGS_STEREO_SUB (1<<4)   ///< The channel is the second half of a stereo (right)
+#define CH_FLAGS_BPS_SHIFT  	(3<<0)   ///< BPS shift value
+#define CH_FLAGS_16BIT      	(1<<2)   ///< Set if the channel is 16 bit
+#define CH_FLAGS_STEREO     	(1<<3)   ///< Set if the channel is stereo (left)
+#define CH_FLAGS_STEREO_SUB 	(1<<4)   ///< The channel is the second half of a stereo (right)
+#define CH_FLAGS_STEREO_ALLOC	(1<<5)   ///< The channel has a buffer sized for stereo
 
 /// @brief Fixed point value used in waveform position calculations.
 /// This is a signed 64-bit integer with the fractional part using
@@ -199,22 +200,26 @@ void mixer_init(int num_channels) {
     __mixer_overlay_id = rspq_overlay_register(&rsp_mixer);
 }
 
-static int mixer_calc_buffer_size(int ch)
+static int mixer_calc_buffer_size(int ch, int nchannels)
 {
 	// Get maximum frequency for this channel
-	int nsamples = Mixer.limits[ch].max_frequency;
+	int64_t nsamples = Mixer.limits[ch].max_frequency;
 
 	// Multiple by maximum byte per sample
 	nsamples *= Mixer.limits[ch].max_bits / 8;
 
+	// Multiply by number of channels
+	nsamples *= nchannels;
+
 	// Calculate buffer size according to number of expected polls per second.
-	int size = ROUND_UP((int)ceilf((float)nsamples / (float)MIXER_POLL_PER_SECOND), 8);
+	int64_t size = ROUND_UP((int64_t)ceilf((float)nsamples / (float)MIXER_POLL_PER_SECOND), 8);
 
 	// If we're over the allowed maximum, clamp to it
 	if (Mixer.limits[ch].max_buf_sz && size > Mixer.limits[ch].max_buf_sz)
 		size = Mixer.limits[ch].max_buf_sz;
 
 	assert((size % 8) == 0);
+	assert((int32_t)size == size);
 	
 	return size;
 }
@@ -357,16 +362,23 @@ static void waveform_read(void *ctx, samplebuffer_t *sbuf, int wpos, int wlen, b
 }
 
 void mixer_ch_play(int ch, waveform_t *wave) {
+	assert(ch < Mixer.num_channels);
 	samplebuffer_t *sbuf = &Mixer.ch_buf[ch];
 	mixer_channel_t *c = &Mixer.channels[ch];
+
+	// If we're going to play a stereo waveform on a channel that was allocated
+	// for mono, we need to reallocate the buffer.
+	if (wave->channels == 2 && !(c->flags & CH_FLAGS_STEREO_ALLOC))
+		samplebuffer_close(sbuf);
 
 	if (!samplebuffer_is_inited(sbuf)) {
 		// If we have not yet allocated the memory for the sample buffers,
 		// this is a good moment to do so, as we might need the configure
 		// the samplebuffer in a moment.
-		int size = mixer_calc_buffer_size(ch);
+		int size = mixer_calc_buffer_size(ch, wave->channels);
 		void *ptr = malloc_uncached(size);
 		samplebuffer_init(sbuf, ptr, size);
+		if (wave->channels == 2) c->flags |= CH_FLAGS_STEREO_ALLOC;
 	}
 
 	// Configure the waveform on this channel, if we have not
@@ -455,8 +467,10 @@ void mixer_ch_set_limits(int ch, int max_bits, float max_frequency, int max_buf_
 
 	// Free the memory immediately, as it doesn't match the new limits anymore.
 	// We will reallocate it later lazily if needed.
-	if (samplebuffer_is_inited(&Mixer.ch_buf[ch]))
+	if (samplebuffer_is_inited(&Mixer.ch_buf[ch])) {
 		samplebuffer_close(&Mixer.ch_buf[ch]);
+		Mixer.channels[ch].flags &= ~CH_FLAGS_STEREO_ALLOC;
+	}
 }
 
 static void mixer_exec(int32_t *out, int num_samples) {
