@@ -312,8 +312,20 @@ static void waveform_read(void *ctx, samplebuffer_t *sbuf, int wpos, int wlen, b
 	waveform_t *wave = (waveform_t*)ctx;
 
 	if (!wave->loop_len) {
-		// No loop defined: just call the waveform's read function.
-		wave->read(wave->ctx, sbuf, wpos, wlen, seeking);
+		// If we're asked to read past the waveform length (because overread),
+		// call the underlying function only up to the actual length,
+		// and then zero the rest of data.
+		int len1 = wlen;
+		if (wpos + wlen > wave->len)
+			len1 = MAX(wave->len - wpos, 0);
+		int len2 = wlen-len1;
+
+		if (len1 > 0)
+			wave->read(wave->ctx, sbuf, wpos, len1, seeking);
+		if (len2 > 0) {
+			void *dest = samplebuffer_append(sbuf, len2);
+			memset(dest, 0, len2 << SAMPLES_BPS_SHIFT(sbuf));
+		}
 	} else {
 		// Calculate wrapped position
 		if (wpos >= wave->len)
@@ -377,6 +389,7 @@ void mixer_ch_play(int ch, waveform_t *wave) {
 		// the samplebuffer in a moment.
 		int size = mixer_calc_buffer_size(ch, wave->channels);
 		void *ptr = malloc_uncached(size);
+		assertf(ptr, "out of memory (size=%d)", size);
 		samplebuffer_init(sbuf, ptr, size);
 		if (wave->channels == 2) c->flags |= CH_FLAGS_STEREO_ALLOC;
 	}
