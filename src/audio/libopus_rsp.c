@@ -893,6 +893,8 @@ void rsp_opus_deemphasis(celt_sig *in[], opus_val16 *pcm, int N, int C, int down
       assertf(nn % 8 == 0, "nn:%d", nn);
       int nnO = nn * C / downsample;
 
+      assert(PhysicalAddr(incur[0]) % 8 == 0);
+      if (C>1) assert(PhysicalAddr(incur[1]) % 8 == 0);
       rsp_cmd_deemphasis(incur[0], (C>1 ? incur[1] : 0), pcmcur, mem, nn, downsample);
 
       incur[0] += nn;
