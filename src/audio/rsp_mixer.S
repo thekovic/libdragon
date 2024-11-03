@@ -1188,9 +1188,13 @@ Mix8Loop:
 
 	.section .bssovl1
 
+					# Codebook must be aligned to allow for xor trick
+					# to switch channels
+					.balign VADPCM_CODEBOOK_SIZE*16 
+VADPCM_CODEBOOK:   	.space VADPCM_CODEBOOK_SIZE*16*2
+
 					.align 4
 VADPCM_STATE:    	.space 16*2   # state, left/right
-VADPCM_CODEBOOK:   	.space VADPCM_CODEBOOK_SIZE*16*2
 VADPCM_BUFFER:      .space MAX_VADPCM_FRAMES*16*2		
 VADPCM_BUFFER_END:	.space 8    # Extra 8 bytes for misalignment
 
@@ -1267,9 +1271,11 @@ VADPCM_Decompress:
 	ltv pred1a.e0,    0,s0
 
 	srl nframes, a1, 24
-	addiu nframes, 1
+	bgez a2, 1f
+	 addiu nframes, 1
+	sll nframes, 1
 
-	# Calculate offset of input buffer inside the output buffer
+1:	# Calculate offset of input buffer inside the output buffer
 	li dmem_output, %lo(VADPCM_BUFFER)
 	and rdram_input, 0x00FFFFFF
 	and a1, 0x00FFFFFF
@@ -1383,6 +1389,7 @@ VADPCM_DecompressMono:
 	sqv vstate1, 0x10,dmem_output
 	srv vstate1, 0x20,dmem_output
 
+	addiu nframes, -1
 	addiu dmem_input, 9
 	bgez a2, VADPCM_Output
 	 addiu dmem_output, 32
@@ -1430,7 +1437,6 @@ VADPCM_InterleaveStereo:
 
 	# Write output into RDRAM (async)
 VADPCM_Output:
-	addiu nframes, -1
 	bgtz nframes, VADPCM_DecompressLoop
 	nop
 

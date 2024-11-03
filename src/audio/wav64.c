@@ -214,7 +214,8 @@ static void waveform_vadpcm_read(void *ctx, samplebuffer_t *sbuf, int wpos, int 
 	bool highpri = false;
 	while (wlen > 0) {
 		// Calculate number of frames to decompress in this iteration
-		int nframes = MIN(wlen / 16, MAX_VADPCM_FRAMES);
+		int max_vadpcm_frames = (wav->wave.channels == 1) ? MAX_VADPCM_FRAMES : MAX_VADPCM_FRAMES / 2;
+		int nframes = MIN(wlen / 16, max_vadpcm_frames);
 
 		// Acquire destination buffer from the sample buffer
 		int16_t *dest = (int16_t*)samplebuffer_append(sbuf, nframes*16);
