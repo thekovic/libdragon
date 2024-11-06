@@ -383,9 +383,10 @@ void wav64_close(wav64_t *wav)
 			break;
 		}
 		wav->ext = NULL;
-		if (wav->current_fd >= 0) {
-			close(wav->current_fd);
-			wav->current_fd = -1;
-		}
+	}
+
+	if (wav->current_fd >= 0) {
+		close(wav->current_fd);
+		wav->current_fd = -1;
 	}
 }
