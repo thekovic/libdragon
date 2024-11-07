@@ -285,7 +285,7 @@ void wav64_open(wav64_t *wav, const char *file_name) {
 	// an unprefixed file name as a dfs file. This is deprecated and not documented
 	// but we just want to avoid breaking existing code
 	if (strchr(file_name, ':') == NULL) {
-		char* dfs_name = alloca(strlen(file_name) + 5);
+		char* dfs_name = alloca(5 + strlen(file_name) + 1);
 		strcpy(dfs_name, "rom:/");
 		strcat(dfs_name, file_name);
 		file_name = dfs_name;
