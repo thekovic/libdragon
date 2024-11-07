@@ -281,6 +281,16 @@ static void waveform_vadpcm_read(void *ctx, samplebuffer_t *sbuf, int wpos, int 
 void wav64_open(wav64_t *wav, const char *file_name) {
 	memset(wav, 0, sizeof(*wav));
 
+	// For backwards compatibility with old versions of this file, we support
+	// an unprefixed file name as a dfs file. This is deprecated and not documented
+	// but we just want to avoid breaking existing code
+	if (strchr(file_name, ':') == NULL) {
+		char* dfs_name = alloca(strlen(file_name) + 5);
+		strcpy(dfs_name, "rom:/");
+		strcat(dfs_name, file_name);
+		file_name = dfs_name;
+	}
+
 	// Open the input file.
 	int file_handle = must_open(file_name);
 	wav64_header_t head = {0};
