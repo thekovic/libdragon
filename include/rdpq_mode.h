@@ -751,10 +751,8 @@ inline void rdpq_mode_zoverride(bool enable, float z, int16_t deltaz) {
  * @brief Activate palette lookup during drawing
  * 
  * This function allows to enable / disable palette lookup during
- * drawing. To draw using a texture with palette, it is necessary
- * to first load the texture into TMEM (eg: via #rdpq_tex_upload), 
- * then load the palette (eg: via #rdpq_tex_upload_tlut),
- * and finally activate the palette drawing mode via #rdpq_mode_tlut.
+ * drawing. Uploading a palette to TMEM can be done via #rdpq_tex_upload_tlut,
+ * or lower-level functions such as #rdpq_load_tlut_raw.
  * 
  * @param tlut     Palette type, or 0 to disable.
  * 
