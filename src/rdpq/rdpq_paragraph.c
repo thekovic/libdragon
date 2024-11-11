@@ -404,6 +404,7 @@ void __rdpq_paragraph_builder_newline(int ch_newline)
     __rdpq_paragraph_builder_update_bbox_width(builder.ch_line_start, ch_newline);
 
     builder.ch_line_start = ch_newline;
+    builder.ch_last_space = -1;
     builder.layout->nlines += 1;
 }
 
