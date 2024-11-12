@@ -296,11 +296,12 @@ uint32_t display_get_bitdepth(void);
 uint32_t display_get_num_buffers(void);
 
 /**
- * @brief Get the current refreshed rate of the TV in Hz
+ * @brief Get the current refresh rate of the video output in Hz
  * 
  * The refresh rate is normally 50 for PAL and 60 for NTSC, but this function
- * will also account for advanced VI configurations affecting the refresh rate,
- * like PAL60.
+ * returns the hardware-accurate number which is close to those but not quite
+ * exact. Moreover, this will also account for advanced VI configurations
+ * affecting the refresh rate, like PAL60.
  * 
  * @return float        Refresh rate in Hz (frames per second)
  */
