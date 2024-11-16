@@ -19,7 +19,7 @@
     if (sizeof(type) < sizeof(_v)) { \
         int64_t ext = (int64_t)_v >> (sizeof(type) * 8); \
         if (ext != 0 && ext != (uint64_t)-1) { \
-            fprintf(stderr, "fatal: truncating value %lld to %s (ext=%lld)\n", (long long)_v, #type, ext); \
+            fprintf(stderr, "fatal: truncating value %lld to %s (ext=%lld)\n", (long long)_v, #type, (long long)ext); \
             assert(ext == 0 || ext == (uint64_t)-1); \
         } \
     } \
