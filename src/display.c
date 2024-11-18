@@ -323,19 +323,28 @@ void display_init( resolution_t res, bitdepth_t bit, uint32_t num_buffers, gamma
 
             break;
         case FILTERS_RESAMPLE_ANTIALIAS:
-            /* Set AA on resample and fetch as well as divot on */
-            control |= VI_AA_MODE_RESAMPLE_FETCH_NEEDED | VI_DIVOT_ENABLE;
-
+            /* Set AA on resample and fetch as well as divot on.
+             * FETCH_ALWAYS seems to change the way VI operates on the bus
+             * to work better when there is bandwidth saturation; so
+             * even if the RDRAM bus is very busy, the VI will still get the
+             * data it needs.
+             *
+             * Note that FETCH_ALWAYS appears to be broken in 32bpp modes, so
+             * we cannot use it there; this means that it'll be much easier
+             * to get image corruption for VI bandwidth saturation in 32bpp modes.
+             */
+            if ( bit == DEPTH_16_BPP )
+                control |= VI_AA_MODE_RESAMPLE_FETCH_ALWAYS | VI_DIVOT_ENABLE;
+            else
+                control |= VI_AA_MODE_RESAMPLE_FETCH_NEEDED | VI_DIVOT_ENABLE;
             break;
         case FILTERS_RESAMPLE_ANTIALIAS_DEDITHER:
             /* Set AA on resample always and fetch as well as dedither on 
-            (only on 16bpp mode, act as FILTERS_RESAMPLE_ANTIALIAS on 32bpp) */
-
-            /* Enable dither filter in 16bpp mode to give gradients
-               a slightly smoother look */
+               (only on 16bpp mode, act as FILTERS_RESAMPLE_ANTIALIAS on 32bpp) */
             if ( bit == DEPTH_16_BPP ) 
-                 control |= VI_AA_MODE_RESAMPLE_FETCH_ALWAYS | VI_DEDITHER_FILTER_ENABLE | VI_DIVOT_ENABLE; 
-            else control |= VI_AA_MODE_RESAMPLE_FETCH_NEEDED | VI_DIVOT_ENABLE;
+                control |= VI_AA_MODE_RESAMPLE_FETCH_ALWAYS | VI_DEDITHER_FILTER_ENABLE | VI_DIVOT_ENABLE;
+            else
+                control |= VI_AA_MODE_RESAMPLE_FETCH_NEEDED | VI_DIVOT_ENABLE;
             break;
     }
 
