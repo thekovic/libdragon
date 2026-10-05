@@ -206,7 +206,7 @@ have to check the relevant header files yourself to see what has changed.
 
 ## Resources
 
- * [API reference](https://dragonminded.github.io/libdragon/ref/topics.html)
+ * [API reference](https://libdragon.dev/ref/topics.html)
  * [Examples](https://github.com/n64brew/libdragon/tree/trunk/examples)
  * [ROM Metadata Viewer](https://dragonminded.github.io/libdragon/static/metadata.html)
  * [Wiki](https://github.com/n64brew/libdragon/wiki) (contains tutorials
