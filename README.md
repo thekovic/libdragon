@@ -5,12 +5,12 @@
 <img src="https://github.com/user-attachments/assets/02586355-e89e-4aac-a208-5ae465287bd7#gh-light-mode-only" id="gh-light-mode-only" width="400">
 </p>
 
-[![Build](https://github.com/DragonMinded/libdragon/actions/workflows/build-toolchain-library-and-roms.yml/badge.svg?branch=trunk)](https://github.com/DragonMinded/libdragon/actions/workflows/build-toolchain-library-and-roms.yml)
+[![Build](https://github.com/n64brew/libdragon/actions/workflows/build-toolchain-library-and-roms.yml/badge.svg?branch=trunk)](https://github.com/n64brew/libdragon/actions/workflows/build-toolchain-library-and-roms.yml)
 
 ## Welcome to libdragon
 
 > [!TIP]
-> Coming back here after a while? Check the [ChangeLog](https://github.com/DragonMinded/libdragon/wiki/Stable-branch--Changelog) of our stable branch, or the [Preview branch](https://github.com/DragonMinded/libdragon/wiki/Preview-branch)
+> Coming back here after a while? Check the [ChangeLog](https://github.com/n64brew/libdragon/wiki/Stable-branch--Changelog) of our stable branch, or the [Preview branch](https://github.com/n64brew/libdragon/wiki/Preview-branch)
 
 Libdragon is an open-source SDK for Nintendo 64. It aims for a complete N64
 programming experience while providing programmers with modern approach to
@@ -26,7 +26,7 @@ programming and debugging. These are the main features:
 * Support both vanilla N64 and iQue Player (Chinese variant). It is possible
   to run ROMs built with libdragon on iQue without modifying the source code.
 * 2D accelerated graphics:
-   * Comprehensive RDP library called [rdpq](https://github.com/DragonMinded/libdragon/wiki/Rdpq)
+   * Comprehensive RDP library called [rdpq](https://github.com/n64brew/libdragon/wiki/Rdpq)
      that offers both low-level access and very high-level blitting functions.
    * Support for drawing sprites of arbitrary sizes and arbitrary pixel formats.
      Rdpq takes care of handling TMEM limits transparently and efficiently.
@@ -35,7 +35,7 @@ programming and debugging. These are the main features:
    * Support for all RDP pixel formats, including palettized ones.
    * Very simple render mode configuration, that allows for full RDP graphic effects
      including custom color combiner and blender.
-   * Comprehensive [mksprite](https://github.com/DragonMinded/libdragon/wiki/Mksprite)
+   * Comprehensive [mksprite](https://github.com/n64brew/libdragon/wiki/Mksprite)
      tool, that converts from PNG format, includes optional state-of-the-art color
      quantizer and dithering.
    * Transparent compression of graphics for minimal ROM size
@@ -44,7 +44,7 @@ programming and debugging. These are the main features:
      streaming samples from ROM during playback for very low memory usage.
    * Supports WAV files for sound effects
    * Supports streaming of uncompressed or VADPCM-compressed WAV files for music.
-   * Supports streaming using the state-of-the-art [Opus codec](https://github.com/DragonMinded/libdragon/wiki/Opus-decompression),
+   * Supports streaming using the state-of-the-art [Opus codec](https://github.com/n64brew/libdragon/wiki/Opus-decompression),
      for incredibly high compression ratio at realtime playback rate.
    * Supports playing of XM modules (FastTracker, MilkyTracker, OpenMPT). Can
      playback a 10-channel XM with < 3% CPU and < 10% RSP.
@@ -53,7 +53,7 @@ programming and debugging. These are the main features:
   * In-ROM filesystem implementation for assets. Assets can be loaded with
     `fopen("rom://asset.dat")` without having to do complex things to link them in.
   * SD card access (`fopen("sd://asset.dat")`) on all available flashcarts.
-* [Data compression](https://github.com/DragonMinded/libdragon/wiki/Compression):
+* [Data compression](https://github.com/n64brew/libdragon/wiki/Compression):
    * Asset library for fast, transparent compression support for data files,
      including your custom ones.
    * Automatically integrated in conversion tools for graphics.
@@ -63,7 +63,7 @@ programming and debugging. These are the main features:
    * Optimized decompression routines in MIPS assembly that run in parallel
      with DMA for maximum speed.
    * Support for streaming decompression based on the `fopen()` interface.
-* [Dynamic library support](https://github.com/DragonMinded/libdragon/wiki/DSO-(dynamic-libraries)) 
+* [Dynamic library support](https://github.com/n64brew/libdragon/wiki/DSO-(dynamic-libraries)) 
   (DSO, sometimes called "overlays") for dynamically loading and unloading part of
   game code and data. This is implemented using the standard `dlopen()` / `dlsym()`.
 * Debugging:
@@ -78,19 +78,19 @@ programming and debugging. These are the main features:
 * Improved boot using open-source IPL3 bootcode, which boots ROMs up to 5x
   faster and allows for compressed game code (using libdragon compression library).
 
-The [preview branch](https://github.com/DragonMinded/libdragon/wiki/Preview-branch) features
+The [preview branch](https://github.com/n64brew/libdragon/wiki/Preview-branch) features
 many more features:
 
  * 3D graphics
    * Allow for easily plugging in 3D graphics pipelines, that can
      potentially even coexist in the same scene.
-   * Included in libdragon: full [OpenGL 1.1 port](https://github.com/DragonMinded/libdragon/wiki/OpenGL-on-N64), together with custom
+   * Included in libdragon: full [OpenGL 1.1 port](https://github.com/n64brew/libdragon/wiki/OpenGL-on-N64), together with custom
      N64 extensions for using RDP-specific features.
    * Third-party: [Tiny3D](https://github.com/HailToDodongo/tiny3d), a high-performance native
      3D pipeline.
    * Both OpenGL and Tiny3D import model files from Blender via the GLTF format,
      and feature also an animation system with skinning support.
- * a [MPEG1 RSP-accelerated movie player](https://github.com/DragonMinded/libdragon/wiki/MPEG1-Player), for high-quality FMVs.
+ * a [MPEG1 RSP-accelerated movie player](https://github.com/n64brew/libdragon/wiki/MPEG1-Player), for high-quality FMVs.
    * Expected performance for FMV: 320x240 movie at 800 Kbit/s at 20 fps
    * Very simple to use also for render-to-texture scenarios, where
      a movie is played back as part of a 3D scene or as background in
@@ -109,13 +109,13 @@ many more features:
      basic things can be performed in threads.
 
 and much more. These features will eventually land to trunk, but you can start playing
-with them even today. Go the [preview branch doc](https://github.com/DragonMinded/libdragon/wiki/Preview-branch) for more information.
+with them even today. Go the [preview branch doc](https://github.com/n64brew/libdragon/wiki/Preview-branch) for more information.
 
 ## Getting started: how to build a ROM
 
-To get started with libdragon, you need to [download and install the toolchain](https://github.com/DragonMinded/libdragon/releases/tag/toolchain-continuous-prerelease).
+To get started with libdragon, you need to [download and install the toolchain](https://github.com/n64brew/libdragon/releases/tag/toolchain-continuous-prerelease).
 
-Make sure to read the [full installation instructions](https://github.com/DragonMinded/libdragon/wiki/Installing-libdragon) which also explain the system requirements.
+Make sure to read the [full installation instructions](https://github.com/n64brew/libdragon/wiki/Installing-libdragon) which also explain the system requirements.
 
 ## Getting started: how to run a ROM
 
@@ -164,9 +164,9 @@ Currently, there are two main libdragon versions:
 
 ## Upgrading libdragon
 
-If you are upgrade the stable version, check the [ChangeLog](https://github.com/DragonMinded/libdragon/wiki/Stable-branch--Changelog)
+If you are upgrade the stable version, check the [ChangeLog](https://github.com/n64brew/libdragon/wiki/Stable-branch--Changelog)
 in the wiki to see latest changes that were merged into the stable version of libdragon.
-Also check the wiki page for [common hurdles in upgrading libdragon](https://github.com/DragonMinded/libdragon/wiki/Upgrade-troubleshooting).
+Also check the wiki page for [common hurdles in upgrading libdragon](https://github.com/n64brew/libdragon/wiki/Upgrade-troubleshooting).
 
 If you are upgrading the preview version, instead, remember that some breaking
 changes are expected. We do not keep track of those though, so you will have
@@ -175,7 +175,7 @@ to check the relevant header files yourself to check what is changed.
 ## Resources
 
  * [API reference](https://dragonminded.github.io/libdragon/ref/topics.html)
- * [Examples](https://github.com/DragonMinded/libdragon/tree/trunk/examples)
- * [Wiki](https://github.com/DragonMinded/libdragon/wiki) (contains tutorials
+ * [Examples](https://github.com/n64brew/libdragon/tree/trunk/examples)
+ * [Wiki](https://github.com/n64brew/libdragon/wiki) (contains tutorials
    and troubleshooting guides)
  * [Discord n64brew](https://discord.gg/WqFgNWf)

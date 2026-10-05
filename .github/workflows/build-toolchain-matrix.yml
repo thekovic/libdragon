@@ -178,7 +178,7 @@ jobs:
           Package_Rpm_Architecture: ${{ matrix.rpm-architecture }}
           Package_License: GPL
           Package_Description: MIPS GCC toolchain for the N64
-          Package_Url: https://github.com/DragonMinded/libdragon
+          Package_Url: https://github.com/n64brew/libdragon
           Package_Maintainer: N64 Brew Community
 
       - name: Publish Windows-x86_64 Build Artifact
@@ -247,8 +247,8 @@ jobs:
       - name: Generate Changelog
         run: |
           CHANGELOG_TEXT="Latest GCC toolchain for the N64</br>"
-          CHANGELOG_TEXT+="Generated from https://github.com/DragonMinded/libdragon/trunk on $(date).</br>"
-          CHANGELOG_TEXT+='Installation instructions are [available in the wiki](https://github.com/DragonMinded/libdragon/wiki/Installing-libdragon)</br>'
+          CHANGELOG_TEXT+="Generated from https://github.com/n64brew/libdragon/trunk on $(date).</br>"
+          CHANGELOG_TEXT+='Installation instructions are [available in the wiki](https://github.com/n64brew/libdragon/wiki/Installing-libdragon)</br>'
           CHANGELOG_TEXT+='</br>'
           CHANGELOG_TEXT+="Builds toolchain dependencies:</br>"
           CHANGELOG_TEXT+="  * GCC:      V${{ needs.build-toolchain.outputs.gcc-version }}</br>"
