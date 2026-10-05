@@ -76,11 +76,11 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p align="center"><a class="anchor" id="md_README"></a> </p>
 <p><img src="https://github.com/user-attachments/assets/74c67b9b-ddb7-4527-bc61-86d244205c65#gh-dark-mode-only" alt="" id="gh-dark-mode-only" width="400" class="inline"/> <img src="https://github.com/user-attachments/assets/02586355-e89e-4aac-a208-5ae465287bd7#gh-light-mode-only" alt="" id="gh-light-mode-only" width="400" class="inline"/> </p>
-<p><a href="https://github.com/DragonMinded/libdragon/actions/workflows/build-toolchain-library-and-roms.yml"><img src="https://github.com/DragonMinded/libdragon/actions/workflows/build-toolchain-library-and-roms.yml/badge.svg?branch=trunk" alt="Build" style="pointer-events: none;" class="inline"/></a></p>
+<p><a href="https://github.com/n64brew/libdragon/actions/workflows/build-toolchain-library-and-roms.yml"><img src="https://github.com/n64brew/libdragon/actions/workflows/build-toolchain-library-and-roms.yml/badge.svg?branch=trunk" alt="Build" style="pointer-events: none;" class="inline"/></a></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Welcome to libdragon</h1>
 <blockquote class="doxtable">
-<p>&zwj;[!TIP] Coming back here after a while? Check the <a href="https://github.com/DragonMinded/libdragon/wiki/Stable-branch--Changelog">ChangeLog</a> of our stable branch, or the <a href="https://github.com/DragonMinded/libdragon/wiki/Preview-branch">Preview branch</a> </p>
+<p>&zwj;[!TIP] Coming back here after a while? Check the <a href="https://github.com/n64brew/libdragon/wiki/Stable-branch--Changelog">ChangeLog</a> of our stable branch, or the <a href="https://github.com/n64brew/libdragon/wiki/Preview-branch">Preview branch</a> </p>
 </blockquote>
 <p>Libdragon is an open-source SDK for Nintendo 64. It aims for a complete N64 programming experience while providing programmers with modern approach to programming and debugging. These are the main features:</p>
 <ul>
@@ -89,12 +89,12 @@ Welcome to libdragon</h1>
 <li>Can be developed with newer-generation emulators (Ares) and development cartridges (64drive, EverDrive64, SummerCart64).</li>
 <li>Support both vanilla N64 and iQue Player (Chinese variant). It is possible to run ROMs built with libdragon on iQue without modifying the source code.</li>
 <li>2D accelerated graphics:<ul>
-<li>Comprehensive RDP library called <a href="https://github.com/DragonMinded/libdragon/wiki/Rdpq">rdpq</a> that offers both low-level access and very high-level blitting functions.</li>
+<li>Comprehensive RDP library called <a href="https://github.com/n64brew/libdragon/wiki/Rdpq">rdpq</a> that offers both low-level access and very high-level blitting functions.</li>
 <li>Support for drawing sprites of arbitrary sizes and arbitrary pixel formats. Rdpq takes care of handling TMEM limits transparently and efficiently.</li>
 <li>Support for sprite zooming and rotation. Rotated sprites are transparently drawn via triangles instead of rectangles.</li>
 <li>Support for all RDP pixel formats, including palettized ones.</li>
 <li>Very simple render mode configuration, that allows for full RDP graphic effects including custom color combiner and blender.</li>
-<li>Comprehensive <a href="https://github.com/DragonMinded/libdragon/wiki/Mksprite">mksprite</a> tool, that converts from PNG format, includes optional state-of-the-art color quantizer and dithering.</li>
+<li>Comprehensive <a href="https://github.com/n64brew/libdragon/wiki/Mksprite">mksprite</a> tool, that converts from PNG format, includes optional state-of-the-art color quantizer and dithering.</li>
 <li>Transparent compression of graphics for minimal ROM size</li>
 </ul>
 </li>
@@ -102,7 +102,7 @@ Welcome to libdragon</h1>
 <li>Advanced RSP-accelerated mixer library, supporting up to 32 channels and streaming samples from ROM during playback for very low memory usage.</li>
 <li>Supports WAV files for sound effects</li>
 <li>Supports streaming of uncompressed or VADPCM-compressed WAV files for music.</li>
-<li>Supports streaming using the state-of-the-art <a href="https://github.com/DragonMinded/libdragon/wiki/Opus-decompression">Opus codec</a>, for incredibly high compression ratio at realtime playback rate.</li>
+<li>Supports streaming using the state-of-the-art <a href="https://github.com/n64brew/libdragon/wiki/Opus-decompression">Opus codec</a>, for incredibly high compression ratio at realtime playback rate.</li>
 <li>Supports playing of XM modules (FastTracker, MilkyTracker, OpenMPT). Can playback a 10-channel XM with &lt; 3% CPU and &lt; 10% RSP.</li>
 <li>Supports playing of YM modules (Arkos Tracker 2) <br  />
 </li>
@@ -113,7 +113,7 @@ Welcome to libdragon</h1>
 <li>SD card access (<code>fopen("sd://asset.dat")</code>) on all available flashcarts.</li>
 </ul>
 </li>
-<li><a href="https://github.com/DragonMinded/libdragon/wiki/Compression">Data compression</a>:<ul>
+<li><a href="https://github.com/n64brew/libdragon/wiki/Compression">Data compression</a>:<ul>
 <li>Asset library for fast, transparent compression support for data files, including your custom ones.</li>
 <li>Automatically integrated in conversion tools for graphics.</li>
 <li>Three different compression algorithms with increasing compression ratio (and decreasing decompression speed). Currently based on LZ4, Aplib, Shrinkler. Compression ratios competitive with gzip and xz, at higher decompression speeds.</li>
@@ -121,7 +121,7 @@ Welcome to libdragon</h1>
 <li>Support for streaming decompression based on the <code>fopen()</code> interface.</li>
 </ul>
 </li>
-<li><a href="https://github.com/DragonMinded/libdragon/wiki/DSO-(dynamic-libraries)">Dynamic library support</a> (DSO, sometimes called "overlays") for dynamically loading and unloading part of game code and data. This is implemented using the standard <code><a class="el" href="group__dl.html#ga14646fd24e2b10d29e3fb95003a91f61" title="Open dynamic library.">dlopen()</a></code> / <code><a class="el" href="group__dl.html#ga5fd30ae080719aa9281eb909b646246b" title="Grab symbol from loaded dynamic library.">dlsym()</a></code>.</li>
+<li><a href="https://github.com/n64brew/libdragon/wiki/DSO-(dynamic-libraries)">Dynamic library support</a> (DSO, sometimes called "overlays") for dynamically loading and unloading part of game code and data. This is implemented using the standard <code><a class="el" href="group__dl.html#ga14646fd24e2b10d29e3fb95003a91f61" title="Open dynamic library.">dlopen()</a></code> / <code><a class="el" href="group__dl.html#ga5fd30ae080719aa9281eb909b646246b" title="Grab symbol from loaded dynamic library.">dlsym()</a></code>.</li>
 <li>Debugging:<ul>
 <li>Clear error screens with symbolized stack traces in case of crashes</li>
 <li>Codebase is filled with assertions, so that you get a nice error screen instead of a console lockup.</li>
@@ -132,16 +132,16 @@ Welcome to libdragon</h1>
 <li>Support for saving to flashes and EEPROMs (including a mini EEPROM filesystem to simplify serialization of structures).</li>
 <li>Improved boot using open-source IPL3 bootcode, which boots ROMs up to 5x faster and allows for compressed game code (using libdragon compression library).</li>
 </ul>
-<p>The <a href="https://github.com/DragonMinded/libdragon/wiki/Preview-branch">preview branch</a> features many more features:</p>
+<p>The <a href="https://github.com/n64brew/libdragon/wiki/Preview-branch">preview branch</a> features many more features:</p>
 <ul>
 <li>3D graphics<ul>
 <li>Allow for easily plugging in 3D graphics pipelines, that can potentially even coexist in the same scene.</li>
-<li>Included in libdragon: full <a href="https://github.com/DragonMinded/libdragon/wiki/OpenGL-on-N64">OpenGL 1.1 port</a>, together with custom N64 extensions for using RDP-specific features.</li>
+<li>Included in libdragon: full <a href="https://github.com/n64brew/libdragon/wiki/OpenGL-on-N64">OpenGL 1.1 port</a>, together with custom N64 extensions for using RDP-specific features.</li>
 <li>Third-party: <a href="https://github.com/HailToDodongo/tiny3d">Tiny3D</a>, a high-performance native 3D pipeline.</li>
 <li>Both OpenGL and Tiny3D import model files from Blender via the GLTF format, and feature also an animation system with skinning support.</li>
 </ul>
 </li>
-<li>a <a href="https://github.com/DragonMinded/libdragon/wiki/MPEG1-Player">MPEG1 RSP-accelerated movie player</a>, for high-quality FMVs.<ul>
+<li>a <a href="https://github.com/n64brew/libdragon/wiki/MPEG1-Player">MPEG1 RSP-accelerated movie player</a>, for high-quality FMVs.<ul>
 <li>Expected performance for FMV: 320x240 movie at 800 Kbit/s at 20 fps</li>
 <li>Very simple to use also for render-to-texture scenarios, where a movie is played back as part of a 3D scene or as background in a 2D game.</li>
 </ul>
@@ -162,11 +162,11 @@ Welcome to libdragon</h1>
 </ul>
 </li>
 </ul>
-<p>and much more. These features will eventually land to trunk, but you can start playing with them even today. Go the <a href="https://github.com/DragonMinded/libdragon/wiki/Preview-branch">preview branch doc</a> for more information.</p>
+<p>and much more. These features will eventually land to trunk, but you can start playing with them even today. Go the <a href="https://github.com/n64brew/libdragon/wiki/Preview-branch">preview branch doc</a> for more information.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Getting started: how to build a ROM</h1>
-<p>To get started with libdragon, you need to <a href="https://github.com/DragonMinded/libdragon/releases/tag/toolchain-continuous-prerelease">download and install the toolchain</a>.</p>
-<p>Make sure to read the <a href="https://github.com/DragonMinded/libdragon/wiki/Installing-libdragon">full installation instructions</a> which also explain the system requirements.</p>
+<p>To get started with libdragon, you need to <a href="https://github.com/n64brew/libdragon/releases/tag/toolchain-continuous-prerelease">download and install the toolchain</a>.</p>
+<p>Make sure to read the <a href="https://github.com/n64brew/libdragon/wiki/Installing-libdragon">full installation instructions</a> which also explain the system requirements.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Getting started: how to run a ROM</h1>
 <h2><a class="anchor" id="autotoc_md4"></a>
@@ -187,21 +187,21 @@ Libdragon stable vs preview</h1>
 </ul>
 <h1><a class="anchor" id="autotoc_md7"></a>
 Upgrading libdragon</h1>
-<p>If you are upgrade the stable version, check the <a href="https://github.com/DragonMinded/libdragon/wiki/Stable-branch--Changelog">ChangeLog</a> in the wiki to see latest changes that were merged into the stable version of libdragon. Also check the wiki page for <a href="https://github.com/DragonMinded/libdragon/wiki/Upgrade-troubleshooting">common hurdles in upgrading libdragon</a>.</p>
+<p>If you are upgrade the stable version, check the <a href="https://github.com/n64brew/libdragon/wiki/Stable-branch--Changelog">ChangeLog</a> in the wiki to see latest changes that were merged into the stable version of libdragon. Also check the wiki page for <a href="https://github.com/n64brew/libdragon/wiki/Upgrade-troubleshooting">common hurdles in upgrading libdragon</a>.</p>
 <p>If you are upgrading the preview version, instead, remember that some breaking changes are expected. We do not keep track of those though, so you will have to check the relevant header files yourself to check what is changed.</p>
 <h1><a class="anchor" id="autotoc_md8"></a>
 Resources</h1>
 <ul>
-<li><a href="https://dragonminded.github.io/libdragon/ref/topics.html">API reference</a></li>
-<li><a href="https://github.com/DragonMinded/libdragon/tree/trunk/examples">Examples</a></li>
-<li><a href="https://github.com/DragonMinded/libdragon/wiki">Wiki</a> (contains tutorials and troubleshooting guides)</li>
+<li><a href="https://libdragon.dev/ref/topics.html">API reference</a></li>
+<li><a href="https://github.com/n64brew/libdragon/tree/trunk/examples">Examples</a></li>
+<li><a href="https://github.com/n64brew/libdragon/wiki">Wiki</a> (contains tutorials and troubleshooting guides)</li>
 <li><a href="https://discord.gg/WqFgNWf">Discord n64brew</a> </li>
 </ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 14 2026 23:36:29 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Oct 5 2026 19:05:52 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
