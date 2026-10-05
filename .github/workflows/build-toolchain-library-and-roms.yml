@@ -76,7 +76,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           # Only push image if this is a push event. Otherwise it will fail because
-          # of permission issues on PRs. Also see https://github.com/DragonMinded/libdragon/issues/230
+          # of permission issues on PRs. Also see https://github.com/n64brew/libdragon/issues/230
           # In effect, each fork will be releasing its own image to its own
           # repository, which we can use to test the toolchain changes.
           push: ${{ github.event_name == 'push' }}

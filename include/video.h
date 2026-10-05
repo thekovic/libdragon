@@ -18,7 +18,7 @@
  * * #h264_codec: H.264 Custom Profile (Baseline + Weighted Prediction)
  * 
  * Higher-level information on how to encode videos and suggested settings can be found
- * in the Libdragon wiki: https://github.com/DragonMinded/libdragon/wiki/MPEG1-Player
+ * in the Libdragon wiki: https://github.com/n64brew/libdragon/wiki/MPEG1-Player
  * 
  * The API in this file is quite simple. The main entry point is #video_open,
  * which opens a video file and returns a handle to it. #video_get_info can be used

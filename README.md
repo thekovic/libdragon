@@ -12,14 +12,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/DragonMinded/libdragon/actions/workflows/build-toolchain-library-and-roms.yml">
-    <img src="https://github.com/DragonMinded/libdragon/actions/workflows/build-toolchain-library-and-roms.yml/badge.svg?branch=trunk"
+  <a href="https://github.com/n64brew/libdragon/actions/workflows/build-toolchain-library-and-roms.yml">
+    <img src="https://github.com/n64brew/libdragon/actions/workflows/build-toolchain-library-and-roms.yml/badge.svg?branch=trunk"
          alt="Build">
   </a>
 </p>
 
 > [!TIP]
-> Coming back here after a while? Check the [ChangeLog](https://github.com/DragonMinded/libdragon/wiki/Stable-branch--Changelog) of our stable branch, or the [Preview branch](https://github.com/DragonMinded/libdragon/wiki/Preview-branch).
+> Coming back here after a while? Check the [ChangeLog](https://github.com/n64brew/libdragon/wiki/Stable-branch--Changelog) of our stable branch, or the [Preview branch](https://github.com/n64brew/libdragon/wiki/Preview-branch).
 
 Libdragon aims to provide a complete Nintendo 64 development experience, combining modern development tools, high-level libraries, and low-level access to the hardware.
 
@@ -31,7 +31,7 @@ Libdragon aims to provide a complete Nintendo 64 development experience, combini
 
 <h3>🎨&nbsp; Graphics &amp; 3D</h3>
 
-<a href="https://libdragon.dev/ref/group__rdpq.html">RDPQ</a> • <a href="https://libdragon.dev/ref/group__rdpq.html">Sprites</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Mkfont">Text & Fonts</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Mkfont">TrueType</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/OpenGL-on-N64">OpenGL 1.1</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Magma-%5BWIP%5D">Magma 3D</a> •
+<a href="https://libdragon.dev/ref/group__rdpq.html">RDPQ</a> • <a href="https://libdragon.dev/ref/group__rdpq.html">Sprites</a> • <a href="https://github.com/n64brew/libdragon/wiki/Mkfont">Text & Fonts</a> • <a href="https://github.com/n64brew/libdragon/wiki/Mkfont">TrueType</a> • <a href="https://github.com/n64brew/libdragon/wiki/OpenGL-on-N64">OpenGL 1.1</a> • <a href="https://github.com/n64brew/libdragon/wiki/Magma-%5BWIP%5D">Magma 3D</a> •
 glTF Models
 
 </td>
@@ -39,7 +39,7 @@ glTF Models
 
 <h3>🔊&nbsp; Audio &amp; Music</h3>
 
-<a href="https://libdragon.dev/ref/group__mixer.html">RSP Mixer</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Audio-playback">Streaming</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Audioconv64">VADPCM</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/ULC-Audio-Codec">ULC</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Opus-decompression">Opus</a> • <a href="https://libdragon.dev/ref/xm64_8h.html">XM modules</a> • <a href="https://libdragon.dev/ref/ym64_8h.html">YM modules</a> •
+<a href="https://libdragon.dev/ref/group__mixer.html">RSP Mixer</a> • <a href="https://github.com/n64brew/libdragon/wiki/Audio-playback">Streaming</a> • <a href="https://github.com/n64brew/libdragon/wiki/Audioconv64">VADPCM</a> • <a href="https://github.com/n64brew/libdragon/wiki/ULC-Audio-Codec">ULC</a> • <a href="https://github.com/n64brew/libdragon/wiki/Opus-decompression">Opus</a> • <a href="https://libdragon.dev/ref/xm64_8h.html">XM modules</a> • <a href="https://libdragon.dev/ref/ym64_8h.html">YM modules</a> •
 MIDI + SF2
 
 </td>
@@ -47,9 +47,9 @@ MIDI + SF2
 
 <h3>🎬&nbsp; Video</h3>
 
-<a href="https://github.com/DragonMinded/libdragon/wiki/MPEG1-Player">MPEG-1</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Videoconv64">H.264</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Videoconv64">YUV</a> •
+<a href="https://github.com/n64brew/libdragon/wiki/MPEG1-Player">MPEG-1</a> • <a href="https://github.com/n64brew/libdragon/wiki/Videoconv64">H.264</a> • <a href="https://github.com/n64brew/libdragon/wiki/Videoconv64">YUV</a> •
 Subtitles •
-Seeking • <a href="https://github.com/DragonMinded/libdragon/wiki/MPEG1-Player">Render-to-texture</a>
+Seeking • <a href="https://github.com/n64brew/libdragon/wiki/MPEG1-Player">Render-to-texture</a>
 
 </td>
 </tr>
@@ -81,7 +81,7 @@ iQue NAND/BBFS
 C11 Runtime • <a href="https://libdragon.dev/ref/n64sys_8h.html">iQue support</a> •
 Open-source IPL3 •
 Region free •
-Coroutines • <a href="https://github.com/DragonMinded/libdragon/wiki/DSO-%28dynamic-libraries%29">DSO/Overlays</a>
+Coroutines • <a href="https://github.com/n64brew/libdragon/wiki/DSO-%28dynamic-libraries%29">DSO/Overlays</a>
 
 </td>
 </tr>
@@ -98,7 +98,7 @@ Coroutines • <a href="https://github.com/DragonMinded/libdragon/wiki/DSO-%28dy
 
 <h3>🛠️&nbsp; Toolchain &amp; Asset Pipeline</h3>
 
-<a href="https://github.com/DragonMinded/libdragon/wiki/Installing-libdragon">GCC 16</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Installing-libdragon">Docker</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Mksprite">PNG</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Mkfont">TTF/OTF</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/OpenGL-on-N64">glTF</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Audioconv64">Audio conversion</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Videoconv64">Video conversion</a> • <a href="https://github.com/DragonMinded/libdragon/wiki/Compression">Compression</a>
+<a href="https://github.com/n64brew/libdragon/wiki/Installing-libdragon">GCC 16</a> • <a href="https://github.com/n64brew/libdragon/wiki/Installing-libdragon">Docker</a> • <a href="https://github.com/n64brew/libdragon/wiki/Mksprite">PNG</a> • <a href="https://github.com/n64brew/libdragon/wiki/Mkfont">TTF/OTF</a> • <a href="https://github.com/n64brew/libdragon/wiki/OpenGL-on-N64">glTF</a> • <a href="https://github.com/n64brew/libdragon/wiki/Audioconv64">Audio conversion</a> • <a href="https://github.com/n64brew/libdragon/wiki/Videoconv64">Video conversion</a> • <a href="https://github.com/n64brew/libdragon/wiki/Compression">Compression</a>
 
 </td>
 <td width="33%" valign="top">
@@ -114,9 +114,9 @@ CPU profiler • <a href="https://libdragon.dev/ref/rdpq__debug_8h.html">RDP val
 
 ## Getting started: how to build a ROM
 
-To get started with libdragon, you need to [download and install the toolchain](https://github.com/DragonMinded/libdragon/releases/tag/toolchain-continuous-prerelease).
+To get started with libdragon, you need to [download and install the toolchain](https://github.com/n64brew/libdragon/releases/tag/toolchain-continuous-prerelease).
 
-Make sure to read the [full installation instructions](https://github.com/DragonMinded/libdragon/wiki/Installing-libdragon) which also explain the system requirements.
+Make sure to read the [full installation instructions](https://github.com/n64brew/libdragon/wiki/Installing-libdragon) which also explain the system requirements.
 
 ## Getting started: how to run a ROM
 
@@ -196,9 +196,9 @@ drop `LIBDRAGON_PREVIEW` once you no longer use any preview API.
 
 ## Upgrading libdragon
 
-Check the [ChangeLog](https://github.com/DragonMinded/libdragon/wiki/Stable-branch--Changelog)
+Check the [ChangeLog](https://github.com/n64brew/libdragon/wiki/Stable-branch--Changelog)
 in the wiki to see the latest changes to the stable APIs.
-Also check the wiki page for [common hurdles in upgrading libdragon](https://github.com/DragonMinded/libdragon/wiki/Upgrade-troubleshooting).
+Also check the wiki page for [common hurdles in upgrading libdragon](https://github.com/n64brew/libdragon/wiki/Upgrade-troubleshooting).
 
 If your project enables `LIBDRAGON_PREVIEW`, instead, remember that some
 breaking changes are expected. We do not keep track of those though, so you will
@@ -207,8 +207,8 @@ have to check the relevant header files yourself to see what has changed.
 ## Resources
 
  * [API reference](https://dragonminded.github.io/libdragon/ref/topics.html)
- * [Examples](https://github.com/DragonMinded/libdragon/tree/trunk/examples)
+ * [Examples](https://github.com/n64brew/libdragon/tree/trunk/examples)
  * [ROM Metadata Viewer](https://dragonminded.github.io/libdragon/static/metadata.html)
- * [Wiki](https://github.com/DragonMinded/libdragon/wiki) (contains tutorials
+ * [Wiki](https://github.com/n64brew/libdragon/wiki) (contains tutorials
    and troubleshooting guides)
  * [Discord n64brew](https://discord.gg/WqFgNWf)
