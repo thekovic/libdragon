@@ -174,7 +174,7 @@ to check the relevant header files yourself to check what is changed.
 
 ## Resources
 
- * [API reference](https://dragonminded.github.io/libdragon/ref/topics.html)
+ * [API reference](https://libdragon.dev/ref/topics.html)
  * [Examples](https://github.com/n64brew/libdragon/tree/trunk/examples)
  * [Wiki](https://github.com/n64brew/libdragon/wiki) (contains tutorials
    and troubleshooting guides)
