@@ -1,3 +1,4 @@
+BUILD_DIR=build
 N64_GCCPREFIX ?= $(N64_INST)
 N64_TARGET ?= mips64-elf
 INSTALLDIR ?= $(N64_INST)
@@ -67,49 +68,54 @@ endif
 
 all:
 
-%.o: %.c
+$(BUILD_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	@echo "    [CC] $@"
 	$(CCACHE) $(CC) $(CFLAGS) -c -o $@ $<
-%.o: %.cpp
+$(BUILD_DIR)/%.o: %.cpp
+	@mkdir -p $(dir $@)
 	@echo "    [CXX] $@"
 	$(CCACHE) $(CXX) $(CXXFLAGS) -c -o $@ $<
-%.a:
+$(BUILD_DIR)/%.a:
+	@mkdir -p $(dir $@)
 	@echo "    [AR] $@"
 	rm -f $@
 	$(AR) rcs $@ $^
 
 
 # Avoid many warnings for vendored code that we don't intend to ever modify
-common/shrinkler_compress.o: 	   CFLAGS += -Wno-all -Wno-error
-mkfont/freetype/FreeTypeAmalgam.o: CFLAGS += -Wno-all -Wno-error
-mkfont/plutosvg/plutosvg-amalgam.o:CFLAGS += -Imkfont/plutosvg -Wno-unused-function -Wno-error
-mkfont/mkfont.o:              	   CXXFLAGS += -Imkfont/plutosvg -Imkfont/freetype
-mksprite/x264_amalgam.o:           CFLAGS += -Wno-all -Wno-error -Wno-constant-logical-operand -fno-strict-aliasing
-mksprite/x264_amalgam.o:           CFLAGS += -Imksprite/x264
-mksprite/x264_amalgam2.o:          CFLAGS += -Wno-all -Wno-error -Wno-constant-logical-operand -fno-strict-aliasing
-mksprite/x264_amalgam2.o:          CFLAGS += -Imksprite/x264
-audioconv64/libvadpcm.o:           CFLAGS += -Iaudioconv64/vadpcm -ffp-contract=off -fno-fast-math
-audioconv64/libulc.o:              CFLAGS += -Wno-unused-but-set-variable -Wno-error
+$(BUILD_DIR)/common/shrinkler_compress.o: 	     CFLAGS += -Wno-all -Wno-error
+$(BUILD_DIR)/mkfont/freetype/FreeTypeAmalgam.o:  CFLAGS += -Wno-all -Wno-error
+$(BUILD_DIR)/mkfont/plutosvg/plutosvg-amalgam.o: CFLAGS += -Imkfont/plutosvg -Wno-unused-function -Wno-error
+$(BUILD_DIR)/mkfont/mkfont.o:              	     CXXFLAGS += -Imkfont/plutosvg -Imkfont/freetype
+$(BUILD_DIR)/mksprite/x264_amalgam.o:            CFLAGS += -Wno-all -Wno-error -Wno-constant-logical-operand -fno-strict-aliasing
+$(BUILD_DIR)/mksprite/x264_amalgam.o:            CFLAGS += -Imksprite/x264
+$(BUILD_DIR)/mksprite/x264_amalgam2.o:           CFLAGS += -Wno-all -Wno-error -Wno-constant-logical-operand -fno-strict-aliasing
+$(BUILD_DIR)/mksprite/x264_amalgam2.o:           CFLAGS += -Imksprite/x264
+$(BUILD_DIR)/audioconv64/libvadpcm.o:            CFLAGS += -Iaudioconv64/vadpcm -ffp-contract=off -fno-fast-math
+$(BUILD_DIR)/audioconv64/libulc.o:               CFLAGS += -Wno-unused-but-set-variable -Wno-error
+$(BUILD_DIR)/n64elfcompress/n64elfcompress.o:    CFLAGS += -DDECOMP_DIR='"$(BUILD_DIR)/common/decomp/"'
 
 
 common-clean:
-	rm -f common/*.o common/*.a common/*.d
-common/assetcomp.a: common/assetcomp.o common/lz4_compress.o \
-				    common/aplib_compress.o common/shrinkler_compress.o
+	rm -f $(BUILD_DIR)/common/*.o $(BUILD_DIR)/common/*.a $(BUILD_DIR)/common/*.d $(BUILD_DIR)/common/decomp/*.bin
+$(BUILD_DIR)/common/assetcomp.a: $(BUILD_DIR)/common/assetcomp.o $(BUILD_DIR)/common/lz4_compress.o \
+				    $(BUILD_DIR)/common/aplib_compress.o $(BUILD_DIR)/common/shrinkler_compress.o
 
-DECOMP_STUBS=common/mips_decomp_l1.bin common/mips_decomp_l2.bin common/mips_decomp_l3.bin
+DECOMP_STUBS=$(BUILD_DIR)/common/decomp/mips_decomp_l1.bin $(BUILD_DIR)/common/decomp/mips_decomp_l2.bin $(BUILD_DIR)/common/decomp/mips_decomp_l3.bin
 
-common/mips_decomp_l1.bin: ../src/compress/lz4_dec_fast.S
-common/mips_decomp_l2.bin: ../src/compress/aplib_dec_fast.S
-common/mips_decomp_l3.bin: ../src/compress/shrinkler_dec_fast.S
+$(BUILD_DIR)/common/decomp/mips_decomp_l1.bin: ../src/compress/lz4_dec_fast.S
+$(BUILD_DIR)/common/decomp/mips_decomp_l2.bin: ../src/compress/aplib_dec_fast.S
+$(BUILD_DIR)/common/decomp/mips_decomp_l3.bin: ../src/compress/shrinkler_dec_fast.S
 
 $(DECOMP_STUBS):
+	@mkdir -p $(dir $@)
 	@echo "    [MIPS] $@"
 	$(N64_GCCPREFIX_TRIPLET)gcc -c -o $@.o $<
 	$(N64_GCCPREFIX_TRIPLET)objcopy -O binary $@.o $@
 	rm $@.o
 
--include $(wildcard common/*.d)
+-include $(wildcard $(BUILD_DIR)/common/*.d)
 
 mkasset_OBJS = mkasset/mkasset.o common/assetcomp.a
 mksprite_OBJS = mksprite/mksprite.o mksprite/mksprite_h264i.o mksprite/mksprite_bc1q.o mksprite/x264_amalgam.o mksprite/x264_amalgam2.o common/assetcomp.a
@@ -132,28 +138,23 @@ n64symdump_OBJS = n64sym/n64symdump.o n64sym/n64sym_huffman.o n64sym/n64sym_shri
 n64metadata_OBJS = n64metadata.o
 ed64romconfig_OBJS = ed64romconfig.o
 n64elfcompress_OBJS = n64elfcompress/n64elfcompress.o common/assetcomp.a
-n64elfcompress/n64elfcompress.o: n64elfcompress/n64elfcompress.c $(DECOMP_STUBS)
+$(BUILD_DIR)/n64elfcompress/n64elfcompress.o: n64elfcompress/n64elfcompress.c $(DECOMP_STUBS)
 TOOLS = n64tool n64metadata n64sym n64symdump n64elfcompress ed64romconfig audioconv64 videoconv64 mkdfs dumpdfs mkasset mksprite mkfont mkmodel mkmaterial n64dso n64dso-msym n64dso-extern rdpvalidate combexpr cpaktool
 
 ifeq ($(OS),Windows_NT)
-MANIFEST = $(if $(findstring Windows,$(OS)),manifest.o,)
-manifest.o: manifest.rc tool.manifest
+MANIFEST = $(if $(findstring Windows,$(OS)),$(BUILD_DIR)/manifest.o,)
+$(BUILD_DIR)/manifest.o: manifest.rc tool.manifest
+	@mkdir -p $(dir $@)
 	@echo "    [RC] $@"
 	windres manifest.rc -O coff -o $@
 endif
 
 define TOOL_template
-.PHONY: $(1)-install $(1)-clean
+.PHONY: $(1) $(1)-install $(1)-clean
+$(1)_OBJS := $$(addprefix $(BUILD_DIR)/,$$($(1)_OBJS))
 $(1)_DIR ?= $$(dir $$(firstword $$($(1)_OBJS)))
 $(1)_BIN ?= $$($(1)_DIR)$(1)$(EXE)
-ifneq ($$($(1)_DIR),./)
-.PHONY: $(1)
 $(1): $$($(1)_BIN)
-endif
-ifneq ($(EXE),)
-.PHONY: $(1)
-$(1): $$($(1)_BIN)
-endif
 $$($(1)_BIN): $$($(1)_OBJS) ${MANIFEST}
 	@echo "    [TOOL] $(1)"
 	$(CXX) $(LDFLAGS) -o $$@ $$^ $(LDLIBS)
@@ -161,16 +162,16 @@ $(1)-install: $(1)
 	mkdir -p $(INSTALLDIR)/bin
 	install -m 0755 $$($(1)_BIN) $(INSTALLDIR)/bin
 $(1)-clean:
-	rm -f $$($(1)_BIN) $$($(1)_DIR)/**/*.o $$($(1)_DIR)/**/*.d
--include $$(wildcard $$($(1)_DIR)/*.d)
+	rm -f $$($(1)_BIN) $$(filter-out $(BUILD_DIR)/common/%,$$($(1)_OBJS)) $$(patsubst %.o,%.d,$$(filter %.o,$$(filter-out $(BUILD_DIR)/common/%,$$($(1)_OBJS))))
+-include $$(patsubst %.o,%.d,$$(filter %.o,$$($(1)_OBJS)))
 endef
 
 $(foreach tool,$(TOOLS),$(eval $(call TOOL_template,$(tool))))
 all: $(TOOLS)
 install: $(foreach tool,$(TOOLS),$(tool)-install)
 clean: $(foreach tool,$(TOOLS),$(tool)-clean) common-clean
-	rm -f ${n64tool_OBJS} ${n64metadata_OBJS} ${n64sym_OBJS} ${n64symdump_OBJS} ${ed64romconfig_OBJS} 
-.PHONY: all install clean
+	rm -rf $(BUILD_DIR)
+.PHONY: all install clean common-clean
 
 ifneq ($(V),1)
 .SILENT:

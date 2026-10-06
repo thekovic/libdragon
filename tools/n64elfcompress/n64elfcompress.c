@@ -28,9 +28,9 @@
 #define INCBIN_PREFIX g_
 #include "../common/incbin.h"
 
-INCBIN(mips_decomp_l1, "common/mips_decomp_l1.bin");
-INCBIN(mips_decomp_l2, "common/mips_decomp_l2.bin");
-INCBIN(mips_decomp_l3, "common/mips_decomp_l3.bin");
+INCBIN(mips_decomp_l1, DECOMP_DIR "mips_decomp_l1.bin");
+INCBIN(mips_decomp_l2, DECOMP_DIR "mips_decomp_l2.bin");
+INCBIN(mips_decomp_l3, DECOMP_DIR "mips_decomp_l3.bin");
 
 struct decomp_s {
     const uint8_t *data;
